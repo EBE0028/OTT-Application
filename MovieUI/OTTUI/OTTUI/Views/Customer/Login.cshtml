@@ -1,0 +1,60 @@
+﻿@model OTTUI.Models.Customer
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@{
+    if(@ViewBag.LoginStatus == "Fail")
+    {
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>Oops🤔</strong> We think that your Customer ID and password is not matching 😥.
+        </div>
+    }
+    
+   
+}
+
+
+
+<br/>
+<div class="row">
+    <h2 class="Heading">Login</h2>
+    <div class="col-lg-2 col-md-1 col-sm-1" style="width:50%;">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="SubHeading" asp-for="CustId" class="control-label"></label>
+                <input asp-for="CustId" class="form-control" />
+                <span asp-validation-for="CustId" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label class="SubHeading" asp-for="CustPassword" class="control-label"></label>
+                <input asp-for="CustPassword" class="form-control" type="password"/>
+                <span asp-validation-for="CustPassword" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+        <br/>
+        <a class="SubHeading" asp-action="ForgotPassword">Forgot Password ?</a>
+    </div>
+    <div class="col-lg-2 col-md-1 col-sm-1" style="width:50%;">
+        <img style="height:100%;width:100%;background-color:azure" src="~/Image/LoginImg.jpg"/>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

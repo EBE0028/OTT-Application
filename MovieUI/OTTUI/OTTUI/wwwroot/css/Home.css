@@ -1,0 +1,62 @@
+﻿
+.CategoryCard {
+    box-shadow: 0 4px 8px 0 rgb(128, 128, 128);
+    transition: 0.3s;
+    border-radius: 25px;
+}
+    .CategoryCard:hover {
+        box-shadow: 0 8px 16px 0 rgb(255, 216, 0);
+        border-radius: 25px;
+    }
+
+/* Add some padding inside the card container */
+.CategoryCardContainer {
+    padding: 2px 16px;
+    border-radius: 25px;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .closebtn:hover {
+        color: black;
+    }
+
+.sucess {
+    padding: 20px;
+    background-color: green;
+    color: white;
+}
+
+#NavItem {
+    font-family: 'Bebas Neue', cursive;
+    color:aliceblue
+    
+}
+    #NavItem :hover {
+        border-style: solid;
+        border-color: blue;
+        color: aliceblue
+    }
+
+.inner-img {
+    transition: 0.3s;
+}
+
+.inner-img:hover {
+    transform: scale(1.1);
+}

@@ -1,0 +1,58 @@
+﻿@model OTTUI.Models.Customer
+
+@{
+    ViewData["Title"] = "sample";
+}
+
+<h1>sample</h1>
+
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="sample">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustId" class="control-label"></label>
+                <input asp-for="CustId" class="form-control" />
+                <span asp-validation-for="CustId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustName" class="control-label"></label>
+                <input asp-for="CustName" class="form-control" />
+                <span asp-validation-for="CustName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustEmail" class="control-label"></label>
+                <input asp-for="CustEmail" class="form-control" />
+                <span asp-validation-for="CustEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustPassword" class="control-label"></label>
+                <input asp-for="CustPassword" class="form-control" />
+                <span asp-validation-for="CustPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustPlan" class="control-label"></label>
+                <input asp-for="CustPlan" class="form-control" />
+                <span asp-validation-for="CustPlan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PayDate" class="control-label"></label>
+                <input asp-for="PayDate" class="form-control" />
+                <span asp-validation-for="PayDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    if(@HttpContextAccessor.HttpContext.Session.GetString("PaymentStatus") == "Fail")
+    {
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>Oops🤔</strong> Payment un-sucessful please login and try again 😥.
+        </div>
+    }    
+ }
+<div class="text-center" >
+
+    <div>
+        <img   src=@Url.Content(ViewBag.Image) height="410px" width="100%" />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 style="text-align: left;font-family: 'Staatliches', cursive;color:white">@ViewBag.Name</h1>
+                <h4 style="text-align: left;font-family: 'Overpass', sans-serif;color:white">Category : @ViewBag.Cat</h4>
+            </div>
+            <div class="col-lg-6">
+                <h1 style="font-weight:500;text-align: right;color:white"><b>@ViewBag.Rating</b>⭐</h1>
+            </div>
+            @{
+                if(@HttpContextAccessor.HttpContext.Session.GetInt32("remaningDays") !=0 && @HttpContextAccessor.HttpContext.Session.GetInt32("CustID") !=null)
+                {
+                    <div style="text-align: left">
+                        <a href="@ViewBag.Link" class="btn btn-primary">Watch Now</a>
+                    </div>
+                    <br/>
+                }
+            }
+
+        </div>
+    </div>
+    <br />
+    <div>
+        <h1 style="color:azure;font-family: 'Staatliches'">Top Rated 🔥</h1>
+        <p style="color:azure;font-family: 'Charis SIL', serif;">Our tops rated films are waiting for you. Explore the top rated movies in all languageS with accurate subtitles.These movies are specially rated to give an immense 🎞Entertainment🎟</p>
+        <h3 style="font-family: 'Lobster', cursive;color:lightgray;">#MaxEntertainment</h3>
+        <a asp-controller="Movie"  type="button" class="btn btn-danger" asp-action="TopRated">Explore</a>
+    </div>
+    <br />
+    <h1 style="text-align: left;font-family: 'Staatliches', cursive;color:white">Languages 📽</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 inner-img" >
+                
+                <img   src="~/Image/TamilLogo.jpeg" height="50%" width="100%" />
+                <br />
+                <h3 style="color:azure;font-family: 'Staatliches'">Tamil</h3>
+                <h6 style="color:azure;font-family: 'Charis SIL', serif;">Kollywood movies filled with romance </h6>
+                <br />
+                <a  type="button" class="btn btn-success" asp-controller="Movie" asp-action="TamilMovies">Tamil</a>
+            </div>
+            <div class="col-lg-3 inner-img">
+                <img  src="~/Image/Englogo.jpg" height="50%" width="100%" />
+                <h3 style="color:azure;font-family: 'Staatliches'">English</h3>
+                <h6 style="color:azure;font-family: 'Charis SIL', serif;">Hollywood's action packed movies for you</h6>
+                <br />
+                <a type="button" class="btn btn-success" asp-controller="Movie" asp-action="EnglishMovies">English</a>
+            </div>
+            <div class="col-lg-3 inner-img">
+                <img  src="~/Image/Hindi.jpg" height="50%" width="100%" />
+                <h3 style="color:azure;font-family: 'Staatliches'">Hindi</h3>
+                <h6 style="color:azure;font-family: 'Charis SIL', serif;">Bollywood's taste hand-crafted for you</h6>
+                <br />
+                <a type="button" class="btn btn-success" asp-controller="Movie" asp-action="HindiMovies">Hindi</a>
+            </div>
+            <div class="col-lg-3 inner-img">
+                <img  src="~/Image/Telegu.jpg" height="50%" width="100%" />
+                <h3 style="color:azure;font-family:'Staatliches'">Telegu</h3>
+                <h6 style="color:azure;font-family: 'Charis SIL', serif;">Tollywood never fails to Entertain</h6>
+                <br />
+                <a type="button" class="btn btn-success" asp-controller="Movie" asp-action="TeleguMovies">Telegu</a>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="CategoryCard">
+        <br/>
+        <h1 style="font-family: 'Staatliches', cursive;color:white" >🎭 Category 🎭</h1>
+        <div class="CategoryCardContainer">
+            <br />
+            <h3 style="color:aliceblue">🎃 Horror 🎃</h3>
+            <h5 style="color:darkred">We present you the most horrifying experience at your comfort zone</h5>
+            <br />
+            <a type="button" class="btn btn-danger" asp-controller="Movie" asp-action="HorrorMovies">Horror</a>
+            <br />
+            <br />
+            <h3 style="color:aliceblue">🎠 Fantasy 🎠</h3>
+            <h5 style="color:lightblue">Movies which are close to your heart</h5>
+            <br />
+            <a type="button" class="btn btn-primary" asp-controller="Movie" asp-action="FantasyMovies">Fantasy</a>
+            <br />
+            <br />
+            <h3 style="color:aliceblue">🐱‍👤 Action 🐱‍🏍</h3>
+            <h5 style="color:cornflowerblue">Movies that won't make to blink your eyes'</h5>
+            <br />
+            <a type="button" class="btn btn-light" asp-controller="Movie" asp-action="ActionMovies">Action</a>
+            <br />
+            <br />
+            <h3 style="color:aliceblue">📚 Documentry 📚</h3>
+            <h5 style="color:forestgreen">We make you feel motivated </h5>
+            <br />
+            <a type="button" class="btn btn-success" asp-controller="Movie" asp-action="DocumentryMovies">Documentry</a>
+            <h6 style="visibility:hidden">asd</h6>
+        </div>
+
+    </div>
+</div>

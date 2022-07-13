@@ -1,0 +1,34 @@
+﻿@model IEnumerable<OTTUI.Models.Movie>
+
+@{
+    ViewData["Title"] = "TamilMovies";
+}
+
+<h1 class="Heading">TamilMovies</h1>
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class=" col-lg-4" style="padding-bottom:20px;">
+            <div class="card inner-img" style="width: 15rem;height:30rem">
+                <img class="card-img-top" src="@Url.Content(@item.MovieImage)" style="width:100%;height:250px">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h5 class="card-title">@item.MovieName</h5>
+                        </div>
+                        <div class="col-lg-6">
+                            <h6 style="text-align:right">@item.MovieRating⭐</h6>
+                        </div>
+                    </div>
+                    <p class="card-text" style="font-family: 'Noto Serif', serif;">Movie Category : @item.MovieCategory</p>
+                    <a href="@item.MovieContent" class="btn btn-primary">Watch Now</a>
+                </div>
+            </div>
+        </div>
+        <br />
+
+    }
+</div>

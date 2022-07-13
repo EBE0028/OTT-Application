@@ -1,0 +1,41 @@
+﻿@model OTTUI.Models.Customer
+
+@{
+    ViewData["Title"] = "CustomerDetails";
+}
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<h1 class="Heading">Customer Details</h1>
+
+<div>
+    <h3 class="SubHeading">Your ID: @HttpContextAccessor.HttpContext.Session.GetInt32("CustID")</h3>
+    <h3 class="SubHeading">Your Name : @HttpContextAccessor.HttpContext.Session.GetString("CustomerName")</h3>
+    <h3 class="SubHeading">Your Email : @HttpContextAccessor.HttpContext.Session.GetString("customerEmail")</h3>
+    <h3 class="SubHeading">Your Password: @HttpContextAccessor.HttpContext.Session.GetString("customerPassword")</h3>
+    <h3 class="SubHeading">Your Last Payment Date: @HttpContextAccessor.HttpContext.Session.GetString("PaymentDate")</h3>
+    <br/>
+</div>
+
+<div>
+    @{
+        if(@HttpContextAccessor.HttpContext.Session.GetInt32("remaningDays")==0)
+        {
+                <div style="text-align:center">
+                    <h3 class="SubHeading">!! Your account has be deactivated !!</h3>
+                    <a asp-controller="Customer" asp-action="Payment" type="button" class="btn btn-danger">Payment</a>
+                </div>
+        }
+        else
+        {
+                <div>
+                    <h3 class="SubHeading">Remaining Days : @HttpContextAccessor.HttpContext.Session.GetInt32("remaningDays")</h3>
+                </div>
+        }
+    }
+</div>
+<div style="text-align:center" class="Heading">
+    <h3>Edit your account </h3>
+    <a type="button" class="btn btn-warning">Edit</a>
+</div>

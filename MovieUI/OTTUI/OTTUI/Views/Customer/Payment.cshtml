@@ -1,0 +1,72 @@
+﻿@model IEnumerable<OTTUI.Controllers.Plan>
+
+@{
+    ViewData["Title"] = "Payment";
+}
+
+
+
+
+<div class="row">
+    <div class="col-lg-2 col-md-1 col-sm-1" style="width:50%;">
+        <h1 class="Heading">Subscription Plan</h1>
+        <br />
+        @{
+            foreach (var item in Model)
+            {
+                if (@item.PlanName == "Gold")
+                {
+                        <h3 style="color:gold;font-family: 'Bebas Neue', cursive;">🥇 @item.PlanName 🥇</h3>
+                        <h6 style="color:gold;font-family: 'Bebas Neue', cursive;">Total Days : @item.PlanDays | Plan price : @item.PlanPrice</h6>
+                }
+                if (@item.PlanName == "Silver")
+                {
+                        <h3 style="color:silver;font-family: 'Bebas Neue', cursive;">🥈 @item.PlanName 🥈</h3>
+                        <h6 style="color:silver;font-family: 'Bebas Neue', cursive;">Total Days : @item.PlanDays | Plan price : @item.PlanPrice</h6>
+                }
+                if (@item.PlanName == "Bronze")
+                {
+                        <h3 style="color:brown;font-family: 'Bebas Neue', cursive;">🥉 @item.PlanName 🥉</h3>
+                        <h6 style="color:brown;font-family: 'Bebas Neue', cursive;">Total Days : @item.PlanDays | Plan price : @item.PlanPrice</h6>
+                }
+
+                    <br />
+            }
+        }
+    </div>
+    <div class="col-lg-2 col-md-1 col-sm-1" style="width:50%;">
+        <img style="height:100%;width:100%;background-color:azure" src="~/Image/Superhero.jpg" />
+    </div>
+</div>
+<br />
+<div>
+    <h2 style="text-align:center" class="Heading">Please select your plan and proceed to pay</h2>
+    <br />
+    @using (Html.BeginForm("Payment", "Customer", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div style="text-align:center">
+            <div class="dropdown">
+                <form method="Post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div>
+                        <select name="id" class="dropdown-content">
+                            <option value="1">🥇 Gold 🥇</option>
+                            <option value="2">🥈 Silver 🥈</option>
+                            <option value="3">🥉 Bronze 🥉</option>
+
+                        </select>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Pay Now" class="btn btn-primary dropbtn" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+<br/>
+<div>
+    <p style="text-align:center;color:orangered">* * Please note once your payment is sucessful you will be redirected to login page * *</p>
+</div>

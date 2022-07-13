@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+<ul class="navbar-nav">
+    @{
+        ViewBag.Username = @HttpContextAccessor.HttpContext.Session.GetString("CustomerName");
+        ViewBag.Days = @HttpContextAccessor.HttpContext.Session.GetInt32("remaningDays");
+
+        if (ViewBag.Username != null)
+        {
+            
+                if (ViewBag.Days != 0)
+                {
+                    <li>
+                        @using (Html.BeginForm("SearchByName", "Movie", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            <input type="text" id="Comments" name="name" style="background-color:black;color:white;box-sizing: border-box;" required/>
+                            <button type="submit" style="background-color:yellow">Go</button>
+                        }
+
+                    </li>
+                }
+            
+
+            <li class="nav-item" id="NavItem">
+                <a id="NavItem" class="nav-link  " asp-controller="Customer" asp-action="CustomerDetails">Hello @ViewBag.Username 🎭 </a>
+            </li>
+            <li class="nav-item" id="NavItem">
+                <a id="NavItem" class="nav-link ">Remaining Days : @ViewBag.Days</a>
+            </li>
+            <li id="NavItem">
+                <a id="NavItem" class="nav-link " asp-controller="Customer" asp-action="Logout">Logout</a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item" id="NavItem">
+                <a class="nav-link  " id="NavItem" asp-controller="Customer" asp-action="Login">Login</a>
+            </li>
+            <li class="nav-item" id="NavItem">
+                <a class="nav-link  " id="NavItem" asp-controller="Customer" asp-action="Register">Register</a>
+            </li>
+        }
+    }
+</ul>
